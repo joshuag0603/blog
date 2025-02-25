@@ -3,35 +3,30 @@
 const themeSwitcher = document.querySelector('#theme-switcher'); // Targeting by ID
 const container = document.querySelector('body');
 
-let mode = 'dark'; // Default mode
+let mode = 'dark';
 
-// Apply saved mode from localStorage (if exists)
 const savedMode = localStorage.getItem('mode');
 if (savedMode) {
   mode = savedMode;
-  container.setAttribute('class', mode); // Apply saved mode class on page load
+  container.setAttribute('class', mode);
 }
 
-// Add event listener for when the ☀️ emoji is clicked
 themeSwitcher.addEventListener('click', function() {
   if (mode === 'dark') {
     mode = 'light';
-    container.setAttribute('class', 'light'); // Switch to light mode
+    container.setAttribute('class', 'light');
   } else {
     mode = 'dark';
-    container.setAttribute('class', 'dark'); // Switch to dark mode
+    container.setAttribute('class', 'dark');
   }
 
-  // Save the current mode to localStorage
   localStorage.setItem('mode', mode);
 });
 
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. 
-// If no data exists, return an empty array.
 function readLocalStorage () {
   const blogEntry = JSON.parse(localStorage.getItem('blogposts'));
-  // console.log("LocalStorage Blogposts:", blogEntry); 
   if (blogEntry === null) {
       return [];
   }
@@ -48,9 +43,6 @@ function storeLocalStorage (newBlogEntry) {
   localStorage.setItem('blogposts', JSON.stringify(blogEntry));
 }
 
-
-
-// ! Use the following function whenever you need to redirect to a different page
 let redirectURL = '';
 
 const redirectPage = function (url) {
